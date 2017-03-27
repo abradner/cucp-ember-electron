@@ -1,6 +1,7 @@
 {
   "name": "cucp-ember-electron",
   "dependencies": {
-    "blob-polyfill": "^1.0.20150320"
+    "blob-polyfill": "^1.0.20150320",
+    "bootstrap-sass": "^3.3.7"
   }
 }
