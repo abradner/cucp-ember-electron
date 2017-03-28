@@ -1,27 +1,26 @@
 <form class="navbar-form navbar-left">
     <div class="form-group {{if callsignError 'has-error'}}">
-        <label class='control-label' for="callsign">This Callsign:</label>
-        <input type="text" class="form-control" placeholder="e.g. ØA" id="callsign">
+        <label for="{{concat elementId '-callsign'}}">This Callsign</label>
+        {{input class="form-control"  placeholder="e.g. ØA" id=(concat elementId '-callsign') value=model.callsign}}
     </div>
     <div class="form-group {{if DOError 'has-error'}}">
-        <label class='control-label' for="callsign">Duty Officer:</label>
-        <input type="text" class="form-control" placeholder="SGT Oldmate" id="callsign">
+        <label for="{{concat elementId '-duty-officer'}}">Duty Officer</label>
+        {{input class="form-control"  placeholder="SGT Oldmate" id=(concat elementId '-duty-officer') value=model.dutyOfficer}}
     </div>
 </form>
 <ul class="nav navbar-nav navbar-right">
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{fa-icon 'cog' size='lg'}} <span class="caret"></span></a>
         <ul class="dropdown-menu">
-            <li><a href="#">About</a></li>
             <li><a href="#">Export Data</a></li>
-            <li><a href="#">Configuration</a></li>
+            <li>{{link-to 'Configuration' 'index'}}</li>
 
             <li role="separator" class="divider"></li>
             <li class="disabled">Theme</li>
             <li>
                 <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                    <button type="button" class="btn btn-primary">Light</button>
-                    <button type="button" class="btn btn-default">Dark</button>
+                    <button type="button" class="btn btn-primary" onclick={{action 'switchCss' 'base'}}>Light</button>
+                    <button type="button" class="btn btn-default" onclick={{action 'switchCss' 'dark'}}>Dark</button>
                 </div>
             </li>
             <li role="separator" class="divider"></li>

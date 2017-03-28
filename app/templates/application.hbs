@@ -1,22 +1,3 @@
-{{#nav-skel navName="top" extraClasses="navbar-fixed-top" dark=dark}} {{nav-top}} {{/nav-skel}}
-<div class="container-fluid">
-    {{outlet}}
-    <div class="row">
-        <div class="col-xs-2">
-            {{#panel-skel header="New Record"}}
-                {{panel-traffic}}
-            {{/panel-skel}}
-        </div>
-        <div class="col-xs-2">
-            {{#panel-skel header="Record type"}}
-                {{panel-record}}
-            {{/panel-skel}}
-        </div>
-        <div class="col-xs-8">
-            {{#panel-skel header="Record Content"}}
-                {{panel-content}}
-            {{/panel-skel}}
-        </div>
-    </div>
-</div>
-{{#nav-skel navName="bottom" extraClasses="navbar-fixed-bottom" dark=dark}} {{nav-bottom}} {{/nav-skel}}
+{{#nav-skel navName="top" extraClasses="navbar-fixed-top" dark=dark}} {{nav-top currentRouteName=currentRouteName}} {{/nav-skel}}
+{{outlet}}
+{{#nav-skel navName="bottom" extraClasses="navbar-fixed-bottom" dark=dark}} {{nav-bottom model=model switchCss='switchCss'}} {{/nav-skel}}
