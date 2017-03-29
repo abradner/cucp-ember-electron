@@ -1,0 +1,10 @@
+<div class="form-group">
+  <label class="col-sm-1 control-label" for="{{concat elementId '-' field.name}}">{{field.serial}}</label>
+  <div class="col-sm-8">
+    {{component (concat "input-" field.type) field=field value=value changed=(action this.attrs.changed )}}
+    {{#if field.helpBlock}}
+      <p class="help-block">{{field.helpBlock}}</p>
+    {{/if}}
+  </div>
+  <label class="col-sm-3" for="{{concat elementId '-' field.name}}">{{field.label}}</label>
+</div>

@@ -21,5 +21,10 @@ export default Component.extend({
     return "record-"+type;
   }),
 
-
+  actions: {
+    doChange(fieldName) {
+      // save
+      console.log(fieldName);
+    }
+  }
 });

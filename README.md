@@ -41,7 +41,8 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+* `mkdir -p tmp/electron-build-tmp/node_modules && ember electron:package --overwrite`
+This will generate all of the packages in `electron-builds` - pick the right one for your OS
 
 ## Further Reading / Useful Links
 
