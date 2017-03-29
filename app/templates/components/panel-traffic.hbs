@@ -1,9 +1,31 @@
-<p><small>Radio Transmission</small></p>
-{{button-action caption="Incoming" icon="fa-sign-in"}}
-{{button-action caption="Outgoing" icon="fa-sign-out"}}
-{{button-action caption="Monitored" icon="fa-headphones"}}
-<p><small>Other Activity</small></p>
-{{button-action caption="Memo" icon="fa-sticky-note-o"}}
-{{button-action caption="Scheduled Memo" icon="fa-bell" flavour="btn-warning"}}
-{{button-action caption="Critical Memo" icon="fa-exclamation-triangle" flavour="btn-danger"}}
 
+{{#each-in categories as |category recordTypes|}} {{!--See components/panel-traffic.js--}}
+<p><small>{{category}}</small></p>
+  {{#each recordTypes as |recordType|}}
+    {{button-action 
+      caption=recordType.caption 
+      icon=recordType.icon 
+      hotKey=recordType.hotKey
+      flavour=recordType.flavour
+      disabled=disabled
+      doClick=(action 
+        this.attrs.startActivity 
+        recordType.mode
+        recordType.operation
+        )
+      }}    
+  {{/each}}
+{{/each-in}}
+
+{{#if disabled}}
+<p><small>Cancel</small></p>
+    {{button-action 
+      caption='Cancel'
+      icon='fa-no' 
+      hotKey='`'
+      flavour='btn-default'
+      doClick=(action 
+        this.attrs.cancel 
+      )
+    }}   
+{{/if}}

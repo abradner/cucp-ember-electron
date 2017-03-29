@@ -1,6 +1,9 @@
-<button class="btn btn-primary btn-block {{flavour}} {{if outline 'btn-outline'}}">
+<button class="btn btn-primary btn-block {{flavour}} {{if outline 'btn-outline'}} {{if disabled 'disabled'}}" disabled={{disabled}} {{action 'clicked'}}>
     {{#if icon}}
         <span class="pull-left">{{fa-icon icon size="lg"}}</span>
     {{/if}}
     {{caption}}
+    {{#if hotKey}}
+        <kbd class="pull-right">{{hotKey}}</kbd>
+    {{/if}}
 </button>

@@ -1,20 +1,28 @@
 <div class="container-fluid">
-    {{outlet}}
-    <div class="row">
-        <div class="col-xs-2">
-            {{#panel-skel header="New Record"}}
-                {{panel-traffic}}
-            {{/panel-skel}}
-        </div>
-        <div class="col-xs-2">
-            {{#panel-skel header="Record type"}}
-                {{panel-record}}
-            {{/panel-skel}}
-        </div>
-        <div class="col-xs-8">
-            {{#panel-skel header="Record Content"}}
-                {{panel-content}}
-            {{/panel-skel}}
-        </div>
+  {{outlet}}
+  <div class="row">
+    <div class="col-xs-2">
+      {{#panel-skel header="New Record" mode=mode}} 
+        {{panel-traffic disabled=trafficDisabled startActivity=(action 'startActivity') cancel=(action 'cancelRecord')}} 
+      {{/panel-skel}}
     </div>
+    {{#if showTypes}}
+      <div class="col-xs-2">
+        {{#panel-skel header=recordHeader}} 
+          {{panel-record trafficDirection=trafficDirection recordType=recordType disabled=typesDisabled selectType=(action 'selectType')}} 
+        {{/panel-skel}}
+      </div>
+      {{#if recordType}}
+        <div class="col-xs-8">
+          {{#panel-skel header=contentHeader}}
+            {{panel-content trafficDirection=trafficDirection recordType=recordType}}
+          {{/panel-skel}}
+        </div>
+      {{/if}} 
+    {{else}}
+      <div class="col-xs-2">
+        {{#panel-skel header="Memo" recordType=recordType}} {{panel-memo}} {{/panel-skel}}
+      </div>
+    {{/if}}
+  </div>
 </div>

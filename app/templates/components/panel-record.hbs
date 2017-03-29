@@ -1,15 +1,15 @@
-<p><small>Routine</small></p>
-{{button-action caption="Message" icon="fa-commenting-o"}}
-{{button-action caption="LocStat" icon="fa-map-marker"}}
-{{button-action caption="Strength State" icon="fa-users"}}
-<p><small>Medical</small></p>
-{{button-action caption="CasEvac" icon="fa-ambulance"}}
-{{button-action caption="NotiCas" icon="fa-stethoscope"}}
-{{button-action caption="StarlightRec" icon="fa-user-md"}}
-<p><small>Supply &amp; Logistics</small></p>
-{{button-action caption="MaintDem" icon="fa-cutlery"}}
-{{button-action caption="MoveRec" icon="fa-bus"}}
-<p><small>Situational</small></p>
-{{button-action caption="SitRep" icon="fa-check-square"}}
-{{button-action caption="IntRep" icon="fa-bullseye"}}
-{{button-action caption="SentryRep" icon="fa-fort-awesome"}}
+{{#each-in categories as |category recordTypes|}} {{!--See components/panel-record.js--}}
+<p><small>{{category}}</small></p>
+  {{#each recordTypes as |recordType|}}
+    {{button-action 
+      caption=recordType.caption 
+      icon=recordType.icon 
+      hotKey=recordType.hotKey
+      disabled=disabled
+      doClick=(action 
+        this.attrs.selectType 
+        recordType.internalType
+        )
+      }}    
+  {{/each}}
+{{/each-in}}
