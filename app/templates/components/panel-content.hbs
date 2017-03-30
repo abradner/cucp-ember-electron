@@ -1,7 +1,19 @@
-{{#if showCallsignFrom}}
-  From:
+<form class='form-horizontal'>
+  {{#if showCallsignFrom}}
+<div class="form-group">
+  <label class="col-sm-1 control-label" for="{{concat elementId '-from'}}">FROM:</label>
+  <div class="col-sm-8">
+    {{input type="text" class="form-control" id=(concat elementId '-from') placeholder='callsign of Sender' value='' change=(action 'doChange' 'from')}}
+  </div>
+</div>
 {{/if}}
 {{#if showCallsignTo}}
-  To:
+<div class="form-group">
+  <label class="col-sm-1 control-label" for="{{concat elementId '- '}}">TO:</label>
+  <div class="col-sm-8">
+    {{input type="text" class="form-control" id=(concat elementId '-to') placeholder='callsign of Receiver' value='' change=(action 'doChange' 'to')}}
+  </div>
+</div>
 {{/if}}
-{{component subpanel changed=(action 'doChange')}}
+</form>
+{{record-skel fields=returnFields changed=(action 'doChange')}}

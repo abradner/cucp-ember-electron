@@ -10,11 +10,11 @@ export default Ember.Component.extend({
     "Medical": [
           {caption: 'CasEvac', icon: 'fa-ambulance', internalType: 'cas-evac', hotKey: 'c'},
           {caption: 'NotiCas', icon: 'fa-stethoscope', internalType: 'noti-cas', hotKey: 'n'},
-          {caption: 'StarlightRec', icon: 'fa-user-md', internalType: 'starlight-rec', hotKey: 'r'}
+          {caption: 'StarlightReq', icon: 'fa-user-md', internalType: 'starlight-req', hotKey: 'r'}
     ],
     "Supply & Logistics": [
           {caption: 'MaintDem', icon: 'fa-cutlery', internalType: 'maint-dem', hotKey: 'm'},
-          {caption: 'MoveRec', icon: 'fa-bus', internalType: 'move-rec', hotKey: 'v'}
+          {caption: 'MoveReq', icon: 'fa-bus', internalType: 'move-req', hotKey: 'v'}
     ],
     "Situational": [
           {caption: 'SitRep', icon: 'fa-check-square', internalType: 'sit-rep', hotKey: 't'},
