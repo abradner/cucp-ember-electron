@@ -12,7 +12,7 @@
         <label for="{{concat elementId '-duty-officer'}}">Duty Officer</label> 
         {{input class="form-control" placeholder="SGT Oldmate" id=(concat elementId '-duty-officer') value=model.dutyOfficer}}
       </div>
-      {{link-to 'Submit' 'activity' class='btn btn-primary'}}
+      {{link-to 'Submit' 'activity' disabled=disableSubmit class='btn btn-primary'}}
     </form>
 
   </div>

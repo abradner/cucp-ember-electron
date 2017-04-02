@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-xs-2">
       {{#panel-skel header="New Record" mode=mode}} 
-        {{panel-traffic disabled=trafficDisabled startActivity=(action 'startActivity') cancel=(action 'cancelRecord')}} 
+        {{panel-traffic disabled=trafficDisabled startActivity=(action 'startActivity') cancel=(action 'clearRecord')}} 
       {{/panel-skel}}
     </div>
     {{#if showTypes}}
@@ -15,13 +15,13 @@
       {{#if recordType}}
         <div class="col-xs-8">
           {{#panel-skel header=contentHeader}}
-            {{panel-content trafficDirection=trafficDirection recordType=recordType}}
+            {{panel-content trafficDirection=trafficDirection recordType=recordType saveRecord='saveRecord' cancelRecord=(action 'clearRecord')}}
           {{/panel-skel}}
         </div>
       {{/if}} 
     {{else}}
       <div class="col-xs-2">
-        {{#panel-skel header="Memo" recordType=recordType}} {{panel-memo}} {{/panel-skel}}
+        {{#panel-skel header="Memo" recordType=recordType saveRecord=(action 'saveMemo')}} {{panel-memo}} {{/panel-skel}}
       </div>
     {{/if}}
   </div>

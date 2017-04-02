@@ -2,6 +2,7 @@
   type="checkbox"
   class=(concat "form-control " field.extraClasses)  
   id=(concat elementId '-' field.name) 
-  checked=value 
-  change=(action 'changed' field.name)
+  checked=value
+  change=(action 'change')
 }}
+  {{!--change=(action this.attrs.changed)--}}

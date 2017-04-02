@@ -5,6 +5,7 @@ const ModeMemo = 'memo';
 const {
   computed,
   get,
+  inject,
   set
 } = Ember;
 const {
@@ -14,6 +15,7 @@ const {
 
 
 export default Ember.Controller.extend({
+  store: inject.service(),
   mode: null,
   trafficDirection: null,
   recordType: null,
@@ -65,20 +67,28 @@ export default Ember.Controller.extend({
     },
     selectType(recordType) {
       this.set('recordType', recordType)
+      // let newModel = this.get('store')
+      // this.set('currentModel', newModel);
       //do new record
     },
 
     saveRecord(recordType, values, print=false) {
-      let expectedRecordType = get(this, recordType);
-      if (recordType ){//!== expectedRecordType) {
-        alert("was expecting #{expectedRecordType} but got #{recordType}. I can still save it and everything will be fine but this is a bug!");
+      let expectedRecordType = get(this, 'recordType');
+      if (recordType !== expectedRecordType) {
+        alert(`was expecting ${expectedRecordType} but got ${recordType}. I can still save it and everything will be fine but this is a bug!`);
       }
       if (print) {
         alert('Printing OMG!');
       }
+      console.log(values);
+      this.send('clearRecord');
     },
 
-    cancelRecord() {
+    saveMemo() {
+      alert("Not implimented")
+    },
+
+    clearRecord() {
       //Transmissions
       this.set('recordType', null);
       this.set('trafficDirection', null);
@@ -87,6 +97,9 @@ export default Ember.Controller.extend({
 
       //Operation
       this.set('mode', null);
+
+      //Data
+      this.set('currentModel', null);
     }
   }
 });

@@ -1,5 +1,5 @@
 <form class='form-horizontal'>
   {{#each fields as |field|}}
-    {{form-group field=field value=(mut (get model field.name)) changed=(action this.attrs.changed)}}
+    {{form-group field=field changed=(action this.attrs.changed)}}
   {{/each}}
 </form>

@@ -1,7 +1,7 @@
 <form class="navbar-form navbar-left">
     <div class="form-group {{if callsignError 'has-error'}}">
         <label for="{{concat elementId '-callsign'}}">This Callsign</label>
-        {{input class="form-control"  placeholder="e.g. ØA" id=(concat elementId '-callsign') value=model.callsign}}
+        {{input disabled=true class="form-control"  placeholder="e.g. ØA" id=(concat elementId '-callsign') value=model.callsign}}
     </div>
     <div class="form-group {{if DOError 'has-error'}}">
         <label for="{{concat elementId '-duty-officer'}}">Duty Officer</label>

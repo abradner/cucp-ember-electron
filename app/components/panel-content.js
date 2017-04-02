@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Component, computed } = Ember;
+const { Component, computed, get, set } = Ember;
 const { match } = computed;
 
 const Incoming = 'incoming';
@@ -112,25 +112,35 @@ export default Component.extend({
   callsignFrom: null,
   callsignTo: null,
   trafficDirection: null, 
+  returnValues: {},
+
 
   showCallsignFrom: match('trafficDirection', /^(incoming|monitored)$/),
   showCallsignTo: match('trafficDirection', /^(outgoing|monitored)$/),
 
   subpanel: computed('recordType', function() {
-    let type = this.get('recordType');
+    let type = get(this, 'recordType');
     return "record-"+type;
   }),
 
   returnFields: computed('recordType', function() {
     let recordType = this.get('recordType');
-    return this.get('fields')[recordType];
+    return get(this, 'fields')[recordType];
   }),
 
-
   actions: {
-    doChange(fieldName) {
-      // save
-      console.log(fieldName);
+    doChange(fieldName, value) {
+      set(this, 'returnValues.'+fieldName, value);
+      console.log(fieldName, value);
+    },
+
+    doSave(print) {
+      this.sendAction(
+        'saveRecord', 
+        get(this,'recordType'),
+        get(this,'returnValues'), 
+        print
+      );
     }
   }
 });

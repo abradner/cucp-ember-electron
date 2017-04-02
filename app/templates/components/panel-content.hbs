@@ -17,3 +17,7 @@
 {{/if}}
 </form>
 {{record-skel fields=returnFields changed=(action 'doChange')}}
+
+{{button-action  flavour='btn-primary' icon='fa-save' caption='Save' name='save' disabled=false doClick=(action 'doSave' false)}}
+{{button-action  flavour='btn-primary' icon='fa-print' caption='Save & Print' name='print' outline=true disabled=false doClick=(action 'doSave' true)}}
+{{button-action  flavour='btn-default' icon='fa-cancel' caption='Cancel' name='cancel' disabled=false doClick=(action this.attrs.cancelRecord)}}
