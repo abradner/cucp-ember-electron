@@ -68,6 +68,16 @@ export default Ember.Controller.extend({
       //do new record
     },
 
+    saveRecord(recordType, values, print=false) {
+      let expectedRecordType = get(this, recordType);
+      if (recordType ){//!== expectedRecordType) {
+        alert("was expecting #{expectedRecordType} but got #{recordType}. I can still save it and everything will be fine but this is a bug!");
+      }
+      if (print) {
+        alert('Printing OMG!');
+      }
+    },
+
     cancelRecord() {
       //Transmissions
       this.set('recordType', null);

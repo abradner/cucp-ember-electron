@@ -1,3 +1,9 @@
-{{#nav-skel navName="top" extraClasses="navbar-fixed-top" dark=dark}} {{nav-top currentRouteName=currentRouteName}} {{/nav-skel}}
+{{#nav-skel navName="top" extraClasses="navbar-fixed-top" dark=dark}} 
+  {{nav-top currentRouteName=currentRouteName}} 
+{{/nav-skel}}
+
 {{outlet}}
-{{#nav-skel navName="bottom" extraClasses="navbar-fixed-bottom" dark=dark}} {{nav-bottom model=model switchCss='switchCss'}} {{/nav-skel}}
+
+{{#nav-skel navName="bottom" extraClasses="navbar-fixed-bottom" dark=dark}}
+  {{nav-bottom model=model zoomLevel=zoomLevel toggleFullScreen=(action 'toggleFullScreen') zoom=(action 'zoom') switchCss=(action 'switchCss')}}
+{{/nav-skel}}

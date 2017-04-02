@@ -4,7 +4,9 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function (defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
-
+    fingerprint: {
+        enabled: false, // we dont need or want asset fingerprinting because this app will not be on a cdn, and it breaks stylesheet substitution
+    },
     outputPaths: {
       app: {
         css: {

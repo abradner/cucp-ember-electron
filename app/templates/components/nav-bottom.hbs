@@ -9,6 +9,10 @@
     </div>
 </form>
 <ul class="nav navbar-nav navbar-right">
+    <li><a href="#" role="button" {{action this.attrs.zoom false}}>{{fa-icon 'fa-minus-square' size='lg'}}</a></li>
+    <li><p class="navbar-text">{{fa-icon 'fa-search'}}{{zoomLevel}}%</p></li>
+    <li><a href="#" role="button" {{action this.attrs.zoom true}}>{{fa-icon 'fa-plus-square' size='lg'}}</a></li>
+    <li><a href="#" role="button" {{action this.attrs.toggleFullScreen}}>{{fa-icon 'fa-window-maximize' size='lg'}}</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{fa-icon 'cog' size='lg'}} <span class="caret"></span></a>
         <ul class="dropdown-menu">
@@ -19,8 +23,8 @@
             <li class="disabled">Theme</li>
             <li>
                 <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                    <button type="button" class="btn btn-primary" onclick={{action 'switchCss' 'base'}}>Light</button>
-                    <button type="button" class="btn btn-default" onclick={{action 'switchCss' 'dark'}}>Dark</button>
+                    <button type="button" class="btn btn-primary" onclick={{action this.attrs.switchCss 'base'}}>Light</button>
+                    <button type="button" class="btn btn-default" onclick={{action this.attrs.switchCss 'dark'}}>Dark</button>
                 </div>
             </li>
             <li role="separator" class="divider"></li>
