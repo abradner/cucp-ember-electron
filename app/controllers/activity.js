@@ -4,6 +4,7 @@ const ModeMemo = 'memo';
 
 const {
   computed,
+  Controller,
   get,
   inject,
   set
@@ -14,7 +15,7 @@ const {
 } = computed;
 
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   store: inject.service(),
   applicationController: inject.controller('application'),
   mode: null,

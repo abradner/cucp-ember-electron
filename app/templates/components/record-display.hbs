@@ -1,0 +1,28 @@
+{{#if editing}}
+  {{!--<form class='form-horizontal'>
+    {{#each fields as |field|}} 
+      {{form-group field=field changed=(action this.attrs.changed)}} 
+    {{/each}}
+  </form>--}}
+{{else}} 
+  <div id='scrollableTable'>
+    <table class="table table-condensed table-striped table-hover table-bordered">
+      <thead>
+        <tr>
+          <th>Serial</th>
+          <th>Description</th>
+          <th>Response</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each-in record as |name value| }}
+          <tr>
+            <td>X</td>
+            <td>{{name}}</td>
+            <td>{{value}}</td>
+          </tr>
+        {{/each-in}}
+      </tbody>
+    </table>
+  </div>
+{{/if}}

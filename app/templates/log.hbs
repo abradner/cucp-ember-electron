@@ -1,4 +1,42 @@
-{{outlet}}
-{{#each model as |tx| }}
-  <p>{{tx}}</p>
-{{/each}}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-8">
+      <h2>Records</h2>
+      <div id='scrollableTable'>
+        <table class="table table-condensed table-striped table-hover table-bordered">
+          <thead>
+            <tr>
+              <th>Return Type</th>
+              <th>Direction</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Duty Officer</th>
+              <th>Time Recorded</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each model as |tx| }}
+            <tr {{action 'showDetails' tx.id}} class={{if (eq activeTransmission tx.id) 'info'}}>
+              <td>{{tx.recordType}}</td>
+              <td>{{tx.direction}}</td>
+              <td>{{tx.callsignSender}}</td>
+              <td>{{tx.callsignReceiver}}</td>
+              <td>{{tx.dutyOfficer}}</td>
+              <td>{{tx.createdAt}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <h2>Details</h2>
+
+      {{#if activeRecord}}
+        {{record-display record=activeRecordFields}}
+      {{else}}
+        <p>Click a record on the left to inspect it</p>
+      {{/if}}
+    </div>
+  </div>
+</div>
