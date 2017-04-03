@@ -16,10 +16,10 @@ export default Ember.Component.extend({
           {caption: 'Outgoing', icon: 'fa-sign-out', mode: 'transmission', operation: 'outgoing', hotKey: '-'},
           {caption: 'Monitored', icon: 'fa-headphones', mode: 'transmission', operation: 'monitored', hotKey: '='}
     ],
-    "Memo": [
-          {caption: 'Memo', icon: 'fa-sticky-note-o', mode: 'memo', operation: 'normal', hotKey: '['},
-          {caption: 'Scheduled Memo', icon: 'fa-bell', flavour: 'btn-warning', mode: 'memo', operation: 'scheduled', hotKey: ']'},
-          {caption: 'Critical Memo', icon: 'fa-exclamation-triangle',  flavour: 'btn-danger', mode: 'memo', operation: 'critical', hotKey: '\\'}
-    ]
+    // "Memo": [
+    //       {caption: 'Memo', icon: 'fa-sticky-note-o', mode: 'memo', operation: 'normal', hotKey: '['},
+    //       {caption: 'Scheduled Memo', icon: 'fa-bell', flavour: 'btn-warning', mode: 'memo', operation: 'scheduled', hotKey: ']'},
+    //       {caption: 'Critical Memo', icon: 'fa-exclamation-triangle',  flavour: 'btn-danger', mode: 'memo', operation: 'critical', hotKey: '\\'}
+    // ]
   },
 });
