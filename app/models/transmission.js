@@ -13,9 +13,11 @@ export default Model.extend({
   callsignReceiver: attr('string'),
   recordType: attr('string'),
   record: belongsTo('record', {
+    async: true,
+    autoSave: true,
     polymorphic: true
   }),
-  transmissionDate: attr('date'),
+  //  transmissionDate: attr('date'),
   createdAt: attr('date', {
     defaultValue() {
       return new Date();

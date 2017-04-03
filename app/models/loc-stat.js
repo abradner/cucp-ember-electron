@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import Record from 'record';
+import Record from 'cucp-ember-electron/models/record';
 
 const {
   attr,

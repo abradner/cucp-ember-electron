@@ -1,5 +1,6 @@
 import Ember from 'ember';
-
+import { storageFor } from 'ember-local-storage';
+ 
 const {
   remote,
   BrowserWindow
@@ -13,15 +14,23 @@ const Themes = {
 }
 
 const {
+  computed,
+  Controller,
   get,
   set,
   $
 } = Ember;
 
+const {
+  alias
+} = computed;
 
-export default Ember.Controller.extend({
+export default Controller.extend({
+  config: storageFor('config'),
   zoomLevel: 100,
 
+  dutyOfficer: alias('config.dutyOfficer'),
+  callsign:  alias('config.callsign'),
 
   actions: {
     toggleFullScreen() {

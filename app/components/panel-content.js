@@ -108,12 +108,9 @@ export default Component.extend({
       
     ]
   },
-
-  callsignFrom: null,
-  callsignTo: null,
+  
   trafficDirection: null, 
   returnValues: {},
-
 
   showCallsignFrom: match('trafficDirection', /^(incoming|monitored)$/),
   showCallsignTo: match('trafficDirection', /^(outgoing|monitored)$/),
@@ -139,6 +136,7 @@ export default Component.extend({
         'saveRecord', 
         get(this,'recordType'),
         get(this,'returnValues'), 
+        get(this,'callsigns'),
         print
       );
     }

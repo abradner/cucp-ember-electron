@@ -3,7 +3,7 @@
 <div class="form-group">
   <label class="col-sm-1 control-label" for="{{concat elementId '-from'}}">FROM:</label>
   <div class="col-sm-8">
-    {{input type="text" class="form-control" id=(concat elementId '-from') placeholder='callsign of Sender' value='' change=(action 'doChange' 'from')}}
+    {{input type="text" class="form-control" id=(concat elementId '-from') placeholder='callsign of Sender' value=callsigns.sender}} {{!--change=(action 'doChange' 'callsignSender' from)}} --}}
   </div>
 </div>
 {{/if}}
@@ -11,13 +11,19 @@
 <div class="form-group">
   <label class="col-sm-1 control-label" for="{{concat elementId '- '}}">TO:</label>
   <div class="col-sm-8">
-    {{input type="text" class="form-control" id=(concat elementId '-to') placeholder='callsign of Receiver' value='' change=(action 'doChange' 'to')}}
+    {{input type="text" class="form-control" id=(concat elementId '-to') placeholder='callsign of Receiver' value=callsigns.receiver}} {{!--change=(action 'doChange' 'callsignSender' to)}} --}}
   </div>
 </div>
 {{/if}}
 </form>
 {{record-skel fields=returnFields changed=(action 'doChange')}}
 
-{{button-action  flavour='btn-primary' icon='fa-save' caption='Save' name='save' disabled=false doClick=(action 'doSave' false)}}
-{{button-action  flavour='btn-primary' icon='fa-print' caption='Save & Print' name='print' outline=true disabled=false doClick=(action 'doSave' true)}}
-{{button-action  flavour='btn-default' icon='fa-cancel' caption='Cancel' name='cancel' disabled=false doClick=(action this.attrs.cancelRecord)}}
+<span>
+  {{button-action  flavour='btn-primary' icon='fa-save' caption='Save' name='save' disabled=false doClick=(action 'doSave' false)}}
+</span>
+<span>
+  {{button-action  flavour='btn-primary' icon='fa-print' caption='Save & Print' name='print' outline=true disabled=false doClick=(action 'doSave' true)}}
+</span>
+<span>
+  {{button-action  flavour='btn-default' icon='fa-cancel' caption='Cancel' name='cancel' disabled=false doClick=(action this.attrs.cancelRecord)}}
+</span>

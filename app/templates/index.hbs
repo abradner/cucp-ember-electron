@@ -1,16 +1,16 @@
 <div class='container'>
   <div class='row'>
-    <h1 class="text-center">Command Post Manager <small>April 2017 (alpha 2)</small></h1>
+    <h1 class="text-center">Command Post Manager <small>April 2017 (beta 1)</small></h1>
     <h2>Basic Settings</h2>
 
     <form>
       <div class="form-group">
         <label for="{{concat elementId '-callsign'}}">This Callsign</label> 
-        {{input class="form-control" placeholder="e.g. ØA" id=(concat elementId '-callsign') value=model.callsign}}
+        {{input class="form-control" placeholder="e.g. ØA" id=(concat elementId '-callsign') value=applicationController.callsign}}
       </div>
       <div class="form-group">
         <label for="{{concat elementId '-duty-officer'}}">Duty Officer</label> 
-        {{input class="form-control" placeholder="SGT Oldmate" id=(concat elementId '-duty-officer') value=model.dutyOfficer}}
+        {{input class="form-control" placeholder="SGT Oldmate" id=(concat elementId '-duty-officer') value=applicationController.dutyOfficer}}
       </div>
       {{link-to 'Submit' 'activity' disabled=disableSubmit class='btn btn-primary'}}
     </form>

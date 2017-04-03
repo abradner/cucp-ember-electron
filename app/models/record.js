@@ -1,10 +1,15 @@
 import DS from 'ember-data';
 
 const {
+  attr,
   Model,
   belongsTo
 } = DS;
 
 export default Model.extend({
-  transmission: belongsTo(),
+  type: attr(),
+  transmission: belongsTo({
+    async: true,
+    autoSave: true
+  }),
 });

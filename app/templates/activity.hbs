@@ -15,7 +15,7 @@
       {{#if recordType}}
         <div class="col-xs-8">
           {{#panel-skel header=contentHeader}}
-            {{panel-content trafficDirection=trafficDirection recordType=recordType saveRecord='saveRecord' cancelRecord=(action 'clearRecord')}}
+            {{panel-content trafficDirection=trafficDirection callsigns=callsigns recordType=recordType saveRecord='saveRecord' cancelRecord=(action 'clearRecord')}}
           {{/panel-skel}}
         </div>
       {{/if}} 

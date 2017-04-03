@@ -16,9 +16,15 @@ const {
 
 export default Ember.Controller.extend({
   store: inject.service(),
+  applicationController: inject.controller('application'),
   mode: null,
   trafficDirection: null,
   recordType: null,
+
+  callsigns: {
+    sender: null,
+    receiver: null
+  },
 
   // template conditionals
   showTypes: computed('mode', function() { //Show record types *unless* we're doing a memo
@@ -61,27 +67,58 @@ export default Ember.Controller.extend({
 
       if (mode === ModeTransmission) {
         this.set('trafficDirection', operation)
+
+        // prefill the callsigns
+        let myCallsign = get(this, 'applicationController.callsign');
+        if (operation === 'incoming' ) {
+          set(this, 'callsigns.receiver', myCallsign);        
+        } else if (operation === 'outgoing') {
+          set(this, 'callsigns.sender', myCallsign);                  
+        }
+
       } else {
         this.set('memoType', operation)
       }
     },
     selectType(recordType) {
-      this.set('recordType', recordType)
+      set(this, 'recordType', recordType)
       // let newModel = this.get('store')
       // this.set('currentModel', newModel);
       //do new record
     },
 
-    saveRecord(recordType, values, print=false) {
+    saveRecord(recordType, values, callsigns, print=false) {
+      // console.log(recordType, values, callsigns, print);
+
       let expectedRecordType = get(this, 'recordType');
       if (recordType !== expectedRecordType) {
         alert(`was expecting ${expectedRecordType} but got ${recordType}. I can still save it and everything will be fine but this is a bug!`);
       }
+
+      let transmissionData = {
+        dutyOfficer: get(this, 'applicationController.dutyOfficer'),
+        direction: get(this, 'trafficDirection'),
+        callsignSender: callsigns.sender,
+        callsignReceiver: callsigns.receiver,
+        recordType: recordType
+      }
+      
+      let transmission = this.store.createRecord('transmission', transmissionData);
+      transmission.save();
+
+      values.type=recordType;
+      values.transmission = transmission;
+      let record = this.store.createRecord(recordType, values);
+      
+      // transmission.record = record;
+      record.save();
+
       if (print) {
         alert('Printing OMG!');
       }
-      console.log(values);
+
       this.send('clearRecord');
+
     },
 
     saveMemo() {
@@ -92,14 +129,17 @@ export default Ember.Controller.extend({
       //Transmissions
       this.set('recordType', null);
       this.set('trafficDirection', null);
+      this.set('callsigns.sender', null);
+      this.set('callsigns.receiver', null);
+
       //Memos
       this.set('memoType', null);
 
       //Operation
       this.set('mode', null);
 
-      //Data
-      this.set('currentModel', null);
+      // //Data
+      // this.set('currentModel', null);
     }
   }
 });
