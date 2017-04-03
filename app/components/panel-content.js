@@ -24,8 +24,8 @@ export default Component.extend({
       {"serial": "A3", "type": "number", "name": "staff",  "label": "Number of staff", "placeholder": "e.g. 3"},
       {"serial": "B1", "type": "number", "name": "expectedAttachments",  "label": "Number of expected ATTachments (in 24h)", "placeholder": "e.g. 1"},
       {"serial": "B2", "type": "number", "name": "expectedDetachments", "label": "Number of expected DETachments (in 24h)", "placeholder": "e.g. 1"},
-      {"serial": "C", "type": "number", "name": "total", "label": "Total number of personel", "placeholder": "(A1+A2+A3+B1-B2"},
-      {"serial": "X", "type": "special", "name": "special-total", "label": "Calculated number of personel. This must equal C", "placeholder": "(complete A1..B2)"}
+      {"serial": "C", "type": "number", "name": "total", "label": "Total number of personel", "placeholder": "(A1+A2+A3+B1) - B2"},
+      {"serial": "X", "type": "special", "name": "special-total", "label": "Calculated number of personel. This must equal C", "placeholder": "(complete A1..B2) PLACEHOLDER - incomplete"}
     ],
     "maint-dem": [
       {"serial": "A", "type": "text", "name": "demandNumber", "label": "Demand Number", "placeholder": "e.g. D420"},
@@ -49,19 +49,21 @@ export default Component.extend({
       {"serial": "D1", "type": "text", "name": "rvLocation", "label": "(GR) Location of RV", "placeholder": "012987"},
       {"serial": "D2", "type": "text", "name": "rvContact", "label": "Callsign & Channel at RV", "placeholder": "e.g. 2/unit net"},      
       {"serial": "E", "type": "text", "name": "comment", "label": "Remarks", "placeholder": "(free text)", "helpBlock": "This is listed as serial D in the SOI. since 2000ish. someone really should fix it."},      
-      {"serial": "E(GR)", "type": "text", "name": "currLocation", "label": "(GR) Current Location (if GR supplied)", "placeholder": "012987", "helpBlock": "Optional. only enter a valid GR, otherwise use Serial E above"},
+      {"serial": "E(GR)", "type": "text", "name": "currLocationGR", "label": "(GR) Current Location (if GR supplied)", "placeholder": "012987", "helpBlock": "Optional. only enter a valid GR, otherwise use Serial E above"},
       {"serial": "LINK", "type": "special", "name": "special-noti-cas", "label": "Link to NotiCas", "placeholder": "(not yet implimented)"}
     ],
     "noti-cas": [
       {"serial": "A", "type": "text", "name": "patientID", "label": "Patient Identifier", "placeholder": "e.g. C11"},
       {"serial": "B", "type": "text", "name": "patientRank",  "label": "Patient Rank", "placeholder": "e.g. SSGT"},
       {"serial": "C", "type": "text", "name": "patientName", "label": "Patient Name", "placeholder": "e.g. Oldmate"},
-      {"serial": "D", "type": "text", "name": "specialEquipment", "label": "Requirements for special equipment", "placeholder": "e.g. 'epipen, compression bandage, neck brace' etc"},
+      {"serial": "D", "type": "text", "name": "injuryDetails", "label": "Details of injury or illness", "placeholder": "e.g. 'fell on star picket. rapidly bleeding open wound to lower right arm"},
       {"serial": "E", "type": "text", "name": "injuryLocation", "label": "(GR) Location of injury", "placeholder": "012987"},
       {"serial": "F", "type": "text", "name": "injuryTime",  "label": "(DTG) Time of delivery", "placeholder": "251000"},      
       {"serial": "G", "type": "text", "name": "treatment", "label": "Treatment administered", "placeholder": "(free text)"},      
-      {"serial": "H", "type": "text", "name": "currLocation", "label": "Remarks and present location (use field below for GR)", "placeholder": "(free text)"},      
-      {"serial": "H(GR)", "type": "text", "name": "currLocation", "label": "(GR) Present Location (if GR supplied)", "placeholder": "012987", "helpBlock": "Optional. only enter a valid GR, otherwise use Serial H above"}
+      {"serial": "H", "type": "text", "name": "currLocationDesc", "label": "Remarks and present location (use field below for GR)", "placeholder": "(free text)"},      
+      {"serial": "H(GR)", "type": "text", "name": "currLocationGR", "label": "(GR) Present Location (if GR supplied)", "placeholder": "012987", "helpBlock": "Optional. only enter a valid GR, otherwise use Serial H above"},
+      {"serial": "LINK", "type": "special", "name": "special-cas-evac", "label": "Link to CasEvac", "placeholder": "(not yet implimented)"}
+      
 
     ],
     "sit-rep": [
@@ -86,8 +88,8 @@ export default Component.extend({
       {"serial": "D2", "type": "text", "name": "cargoVehicles", "label": "Estimated number of vehicle loads of cargo", "placeholder": "(free text)"},
       {"serial": "D3", "type": "checkbox", "name": "hasLoadingCrew", "label": "Is loading/unloading party available at loc",  "helpBlock": "Ticked if party  will be available"},
       {"serial": "E", "type": "text", "name": "pickupTime", "label": "(DTG) Time of pickup at location", "placeholder": "251000"},      
-      {"serial": "F", "type": "text", "name": "rvLandmark", "label": "Known landmark of RV", "placeholder": "e.g. 'HQ'"},
-      {"serial": "F([GR)", "type": "text", "name": "rvLocation", "label": "(GR) Location of RV", "placeholder": "012987"}
+      {"serial": "F", "type": "text", "name": "pickupLandmark", "label": "Known landmark of RV", "placeholder": "e.g. 'HQ'"},
+      {"serial": "F([GR)", "type": "text", "name": "pickupLocation", "label": "(GR) Location of RV", "placeholder": "012987"}
     ],
     "starlight-req": [
       {"serial": "A", "type": "text", "name": "rvCallsign", "label": "Callsign(s) at RV", "placeholder": "e.g. 3"},      
